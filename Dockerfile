@@ -24,7 +24,7 @@ WORKDIR /app
 # For now, we'll create a placeholder that works with Zeabur
 
 # Install common dependencies
-RUN apt-get update && apt-get install -y --no-cache curl bash
+RUN apt-get update && apt-get install -y curl bash
 # Create openclaw config directory with proper permissions
 RUN mkdir -p /home/node/.openclaw && \
     chown -R node:node /home/node/.openclaw
