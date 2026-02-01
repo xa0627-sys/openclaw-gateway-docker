@@ -57,4 +57,8 @@ EXPOSE 8080
 # - node /app/dist/gateway/server.js
 #
 # For Zeabur deployment, we'll use a flexible startup
-CMD ["node", "-e", "require('http').createServer((_,r)=>r.end('OK')).listen(8080)"]
+
+# Install OpenClaw Gateway from npm
+RUN npm install -g openclaw
+
+CMD ["openclaw", "gateway", "--port", "8080"]
