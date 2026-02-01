@@ -7,17 +7,17 @@
 #   docker build -t openclaw-gateway:latest .
 #   docker run -e OPENCLAW_GATEWAY_TOKEN=your-token-here openclaw-gateway:latest
 #
-# Base image: Node.js 18
-FROM node:18 AS base
+# Base image: Node.js 22 (required by OpenClaw)
+FROM node:22 AS base
 
 # Set working directory
 WORKDIR /app
 
-# Install common dependencies and OpenClaw (as root)
-RUN apt-get update && apt-get install -y curl bash
+# Install common dependencies (as root)
+RUN apt-get update && apt-get install -y --no-install-recommends curl bash && rm -rf /var/lib/apt/lists/*
 
-# Install OpenClaw Gateway from install script (must be root)
-RUN curl -fsSL https://openclaw.ai/install.sh | bash
+# Install OpenClaw CLI globally from npm (as root)
+RUN npm install -g openclaw@latest
 
 # Create openclaw config directory with proper permissions
 RUN mkdir -p /home/node/.openclaw && \
