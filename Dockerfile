@@ -35,8 +35,8 @@ RUN mkdir -p /home/node/.openclaw && \
 USER node
 
 # Copy any local config (optional - will be overridden by mounted volumes)
-COPY --chown=node:node config/ /home/node/.openclaw/ 2>/dev/null || true
-
+# Create config directory structure (populated at runtime via Zeabur volumes)
+RUN mkdir -p /home/node/.openclaw/config && chown -R node:node /home/node/.openclaw
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8080/health || exit 1
