@@ -1,0 +1,41 @@
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log
+.npm
+yarn-error.log
+
+# Build
+build/
+dist/
+*.tar.gz
+
+# Runtime
+.openclaw/
+~/.openclaw/
+config/*.json
+!config/*.json.example
+
+# Logs
+logs/
+*.log
+
+# Misc
+.DS_Store
+TODO.md
+DEV_NOTES.md
