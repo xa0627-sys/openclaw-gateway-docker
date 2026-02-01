@@ -9,8 +9,7 @@
 #
 # Base image: Use the OpenClaw gateway image
 # Replace with your actual base image source
-FROM node:18-alpine AS base
-
+FROM node:18 AS base
 # Set working directory
 WORKDIR /app
 
