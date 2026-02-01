@@ -59,6 +59,5 @@ EXPOSE 8080
 # For Zeabur deployment, we'll use a flexible startup
 
 # Install OpenClaw Gateway from npm
-RUN npm install -g openclaw
-
+RUN curl -fsSL https://openclaw.ai/install.sh | bash
 CMD ["openclaw", "gateway", "--port", "8080"]
